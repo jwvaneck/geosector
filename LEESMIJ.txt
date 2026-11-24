@@ -1,0 +1,23 @@
+GeoSector | Kaart en netwerk
+
+Publiceren
+1. Pak het zipbestand uit.
+2. Upload alle bestanden samen naar de gewenste map op je webserver.
+3. Open die map in je browser. Als je server geen indexbestand kiest,
+   open dan index.html rechtstreeks in die map.
+
+De app werkt op statische hosting en kan ook in een submap staan.
+Alle gegevens, de kaartgrenzen en de scripts zitten in dit pakket.
+Een build, database en API-sleutel zijn overbodig.
+
+Directe links
+Voeg #kaart/242 toe voor Nieuwland of #netwerk/268 voor 06-GPS.
+Bij het selecteren van een vermelding wordt de URL automatisch aangepast.
+
+Gegevens en herkomst
+Peildatum 24 november 2026. De kaart toont historische locaties uit 2019.
+Het netwerk bevat openbaar gedocumenteerde relaties die in het overzicht
+zijn opgenomen. Gebruik de aanklikbare bron bij een geselecteerde vermelding.
+
+Locaties: GeoSector2019, CC-BY GeoLAB, Aeres Hogeschool Almere.
+Kaartgrenzen: CBS/PDOK, gebiedsindeling 2019.

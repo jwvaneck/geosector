@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Verken veranderingen in bedrijfsnamen en openbare relaties in de Nederlandse geosector.">
+  <meta name="theme-color" content="#0c2830">
+  <title>GeoSector · Kaart en netwerk</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="data.js" defer></script>
+  <script src="map.js" defer></script>
+  <script src="network.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Direct naar de inhoud</a>
+  <header class="site-header">
+    <div class="page-width topbar">
+      <a class="brand" href="#kaart"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>GeoSector</a>
+      <nav aria-label="Hoofdnavigatie">
+        <a href="#kaart" data-tab="kaart" aria-current="page">Kaart</a>
+        <a href="#netwerk" data-tab="netwerk">Netwerk</a>
+      </nav>
+      <a class="header-source" href="#bronnen">Bronnen</a>
+    </div>
+  </header>
+
+  <main id="main" class="page-width">
+    <div class="intro">
+      <div>
+        <h1>De Nederlandse geosector</h1>
+        <p>Volg bedrijfsnamen uit 2019 en verken de verbindingen tussen organisaties.</p>
+      </div>
+      <p class="asof">Peildatum <time datetime="2026-11-24">24 november 2026</time></p>
+    </div>
+
+    <section id="kaart-pane" class="pane" aria-labelledby="kaart-titel">
+      <header class="pane-heading">
+        <div><h2 id="kaart-titel">Verdwenen bedrijfsnamen</h2>
+          <p>De punten tonen de locaties uit 2019.</p>
+        </div>
+        <p class="count" data-map-count></p>
+      </header>
+      <div class="explorer" id="geo-bedrijfsnamen-map">
+        <div class="visual">
+          <div class="legend bedrijf-legend" aria-label="Kaartlegenda">
+            <span><i class="bedrijf-kind naam" aria-hidden="true"></i>Nieuwe naam</span>
+            <span><i class="bedrijf-kind over" aria-hidden="true"></i>Opgegaan of opgevolgd</span>
+            <span><i class="bedrijf-kind stop" aria-hidden="true"></i>Opgeheven</span>
+          </div>
+          <svg class="bedrijf-map text-small" role="img" aria-label="Kaart van Nederland met historische bedrijfslocaties. Kies een bedrijf in de lijst voor details."></svg>
+        </div>
+        <aside class="inspector" aria-label="Bedrijf op de kaart">
+          <label for="geo-bedrijfsnamen-keuze">Bedrijf</label>
+          <select id="geo-bedrijfsnamen-keuze"><option value="">Kies een bedrijf</option></select>
+          <div class="bedrijf-detail detail" data-company-detail aria-live="polite"></div>
+          <div class="directory">
+            <label for="map-search">Zoek op naam of plaats</label>
+            <input id="map-search" type="search" autocomplete="off" placeholder="Bijv. Geodan of Amsterdam">
+            <div class="result-list" data-map-results></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="netwerk-pane" class="pane" aria-labelledby="netwerk-titel" hidden>
+      <header class="pane-heading">
+        <div><h2 id="netwerk-titel">Organisatienetwerk</h2>
+          <p>Openbare partner-, klant- en leveranciersrelaties.</p>
+        </div>
+        <p class="count" data-network-summary aria-live="polite"></p>
+      </header>
+      <div class="explorer" id="geosector-netwerk">
+        <div class="visual">
+          <div class="legend network-links" aria-label="Netwerklegenda">
+            <span><i class="network-dot" aria-hidden="true"></i>Lid GeoBusiness NL</span>
+            <span><i class="network-dot open" aria-hidden="true"></i>Overige organisaties</span>
+            <span><i class="network-line" aria-hidden="true"></i>Partner</span>
+            <span><i class="network-line supply" aria-hidden="true"></i>Leverancier → klant</span>
+            <span><i class="network-line other" aria-hidden="true"></i>Overige relatie</span>
+          </div>
+          <svg class="network text-small" role="img" aria-label="Netwerk van organisaties en hun openbare relaties. Kies een organisatie in de keuzelijst."></svg>
+          <p class="empty-network" hidden>Voor deze vermelding is geen openbare relatie opgenomen.</p>
+        </div>
+        <aside class="inspector" aria-label="Organisatie in het netwerk">
+          <label for="geosector-netwerk-keuze">Organisatie</label>
+          <select id="geosector-netwerk-keuze"><option value="">Hele netwerk</option></select>
+          <div class="network-detail detail" data-network-detail aria-live="polite"></div>
+          <div class="directory">
+            <label for="network-search">Zoek een organisatie</label>
+            <input id="network-search" type="search" autocomplete="off" placeholder="Bijv. 06-GPS of Kadaster">
+            <div class="result-list" data-network-results></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <footer id="bronnen" class="sources">
+      <div><h2>Bronnen</h2><p>De relatiegegevens en het lidmaatschap zijn gebaseerd op openbare bronnen. Bij elke geselecteerde vermelding staan de bijbehorende links.</p></div>
+      <ul>
+        <li><a href="https://aereshogeschool.maps.arcgis.com/home/item.html?id=11c66950da2e47c49de99e2b15b7d976#overview" target="_blank" rel="noopener noreferrer">GeoSector2019</a> · CC-BY GeoLAB, Aeres Hogeschool Almere</li>
+        <li><a href="https://api.pdok.nl/cbs/gebiedsindelingen/ogc/v1/collections/provincie_gegeneraliseerd" target="_blank" rel="noopener noreferrer">Kaartgrenzen CBS/PDOK 2019</a></li>
+        <li><a href="https://www.geobusiness.nl/ledenservice/leden-overzicht" target="_blank" rel="noopener noreferrer">Ledenoverzicht GeoBusiness Nederland</a></li>
+      </ul>
+    </footer>
+  </main>
+</body>
+</html>
